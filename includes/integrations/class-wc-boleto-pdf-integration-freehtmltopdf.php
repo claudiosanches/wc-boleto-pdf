@@ -30,14 +30,11 @@ class WC_Boleto_PDF_Integration_Freehtmltopdf extends WC_Boleto_PDF_Integration 
 	/**
 	 * Get PDF URL.
 	 *
-	 * @param  string $boleto_url
-	 * @param  array  $settings
-	 *
 	 * @return string
 	 */
-	public function get_pdf_url( $boleto_url, $settings = array() ) {
+	public function get_pdf_url() {
 		$data = array(
-			'convert'     => $boleto_url,
+			'convert'     => $this->boleto_url,
 			'language'    => 'pt_BR',
 			'orientation' => 'portrait',
 			'size'        => 'A4'
@@ -55,8 +52,11 @@ class WC_Boleto_PDF_Integration_Freehtmltopdf extends WC_Boleto_PDF_Integration 
 			&& 200 === $response['response']['code']
 			&& 'Converting to PDF failed' !== substr( $response['body'], 0, 24 )
 		) {
+			$this->logger( 'PDF generated successfully!' );
 			return $response['body'];
 		}
+
+		$this->logger( 'Error while generating PDF: ' . print_r( $response, true ) );
 
 		return '';
 	}

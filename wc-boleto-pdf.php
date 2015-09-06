@@ -68,6 +68,7 @@ class WC_Boleto_PDF {
 	 */
 	private function _includes() {
 		include_once 'includes/abstracts/abstract-wc-boleto-pdf-integration.php';
+		include_once 'includes/admin/wc-boleto-pdf-admin.php';
 		include_once 'includes/integrations/class-wc-boleto-pdf-integration-freehtmltopdf.php';
 	}
 
@@ -94,7 +95,7 @@ class WC_Boleto_PDF {
 	}
 
 	/**
-	 * Generate PDF with http://freehtmltopdf.com API
+	 * Generate PDF.
 	 */
 	public function generate_pdf() {
 		global $wp_query;
@@ -104,9 +105,10 @@ class WC_Boleto_PDF {
 		$order_id = wc_get_order_id_by_order_key( $ref );
 
 		if ( isset( $_GET['pdf'] ) && 'true' === $_GET['pdf'] ) {
+			$settings    = $this->get_settings();
 			$boleto_url  = remove_query_arg( 'pdf', WC_Boleto::get_boleto_url( $boleto_code ) );
-			$integration = new WC_Boleto_PDF_Integration_Freehtmltopdf();
-			$pdf_url     = $integration->get_pdf_url( $boleto_url );
+			$integration = new WC_Boleto_PDF_Integration_Freehtmltopdf( $boleto_url, $settings );
+			$pdf_url     = $integration->get_pdf_url();
 
 			// Redirect just if is converted successfully!
 			if ( ! empty( $pdf_url ) ) {
@@ -120,6 +122,20 @@ class WC_Boleto_PDF {
 
 			exit;
 		}
+	}
+
+	/**
+	 * Get settings.
+	 *
+	 * @return array
+	 */
+	protected function get_settings() {
+		$settings = get_option( 'woocommerce_boleto_pdf_settings', array() );
+		$default  = array(
+			'debug' => 'no',
+		);
+
+		return array_merge( $default, $settings );
 	}
 }
 
