@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: WooCommerce Boleto PDF
+ * Plugin Name: WooCommerce Boleto - PDF Add-on
  * Plugin URI: https://claudiosmweb.com
- * Description: Gerenrate PDF files for WooCommerce Boleto
+ * Description: Generate PDF files for WooCommerce Boleto
  * Author: Claudio Sanches
  * Author URI: https://claudiosmweb.com
  * Version: 1.0.0
  * License: GPLv2 or later
- * Text Domain: woocommerce-boleto-pdf
+ * Text Domain: wc-boleto-pdf
  * Domain Path: /languages/
  */
 
