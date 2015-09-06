@@ -42,6 +42,8 @@ class WC_Boleto_PDF {
 	private function __construct() {
 		// Checks with WooCommerce Boleto is installed.
 		if ( class_exists( 'WC_Boleto' ) ) {
+			$this->_includes();
+
 			add_filter( 'woocommerce_boleto_url', array( $this, 'use_pdf' ) );
 			add_action( 'template_redirect', array( $this, 'template_redirect' ), 9999 );
 		}
@@ -59,6 +61,14 @@ class WC_Boleto_PDF {
 		}
 
 		return self::$instance;
+	}
+
+	/**
+	 * Includes.
+	 */
+	private function _includes() {
+		include_once 'includes/abstracts/abstract-wc-boleto-pdf-integration.php';
+		include_once 'includes/integrations/class-wc-boleto-pdf-integration-freehtmltopdf.php';
 	}
 
 	/**
@@ -94,27 +104,16 @@ class WC_Boleto_PDF {
 		$order_id = wc_get_order_id_by_order_key( $ref );
 
 		if ( isset( $_GET['pdf'] ) && 'true' === $_GET['pdf'] ) {
-			$boleto_url = remove_query_arg( 'pdf', WC_Boleto::get_boleto_url( $boleto_code ) );
-			$data = array(
-				'convert'     => $boleto_url,
-				'language'    => 'pt_BR',
-				'orientation' => 'portrait',
-				'size'        => 'A4'
-			);
-			$params = array(
-				'body'    => http_build_query( $data ),
-				'headers' => array(
-					'content-type' => 'application/x-www-form-urlencoded'
-				)
-			);
-			$response = wp_remote_get( 'http://freehtmltopdf.com', $params );
+			$boleto_url  = remove_query_arg( 'pdf', WC_Boleto::get_boleto_url( $boleto_code ) );
+			$integration = new WC_Boleto_PDF_Integration_Freehtmltopdf();
+			$pdf_url     = $integration->get_pdf_url( $boleto_url );
 
 			// Redirect just if is converted successfully!
-			if ( 'Converting to PDF failed' !== substr( $response['body'], 0, 24 ) ) {
+			if ( ! empty( $pdf_url ) ) {
 				// $filename = sanitize_title_with_dashes( get_bloginfo( 'name' ) . '-boleto-pedido-n' . $order_id ) . '.pdf';
 				header( 'Content-type: application/pdf' );
 				// header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
-				echo $response['body'];
+				echo $pdf_url;
 			} else {
 				wp_redirect( $boleto_url );
 			}
