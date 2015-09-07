@@ -1,0 +1,73 @@
+# Copyright (C) 2015 Claudio Sanches
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Boleto - PDF Add-on 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/plugins/woocommerce-domination/\n"
+"POT-Creation-Date: 2015-09-07 02:52:17+00:00\n"
+"PO-Revision-Date: 2015-09-06 23:58-0300\n"
+"Last-Translator: Claudio Sanches <contato@claudiosmweb.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: includes/admin/wc-boleto-pdf-admin.php:35
+msgid "PDF Settings"
+msgstr "Configurações para PDF"
+
+#: includes/admin/wc-boleto-pdf-admin.php:40
+msgid "Integration API"
+msgstr "API de integração"
+
+#: includes/admin/wc-boleto-pdf-admin.php:43
+msgid "Choose the integration that will generate the PDFs files."
+msgstr ""
+"Selecione uma integração que sera utilizada para gerar os arquivos PDF."
+
+#: includes/admin/wc-boleto-pdf-admin.php:53
+msgid "API Key"
+msgstr "Chave de API"
+
+#: includes/admin/wc-boleto-pdf-admin.php:56
+msgid "Please enter your Integration API Key"
+msgstr "Por favor, digite a chave de API da integração selecionada"
+
+#: includes/admin/wc-boleto-pdf-admin.php:60
+msgid "Debug Log"
+msgstr "Log de depuração"
+
+#: includes/admin/wc-boleto-pdf-admin.php:62
+msgid "Enable logging"
+msgstr "Habilitar log"
+
+#: includes/admin/wc-boleto-pdf-admin.php:64
+msgid "Log events, such as API requests, inside %s"
+msgstr "Registra eventos, como solicitações de API em %s"
+
+#: includes/admin/wc-boleto-pdf-admin.php:64
+msgid "System Status &gt; Logs"
+msgstr "Status do Sistema &gt; Logs"
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Boleto - PDF Add-on"
+msgstr "WooCommerce Boleto - PDF Add-on"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/claudiosmweb/wc-boleto-pdf"
+msgstr "https://github.com/claudiosmweb/wc-boleto-pdf"
+
+#. Description of the plugin/theme
+msgid "Generate PDF files for WooCommerce Boleto"
+msgstr "Gera arquivos de PDF para o WooCommerce Boleto"
+
+#. Author of the plugin/theme
+msgid "Claudio Sanches"
+msgstr "Claudio Sanches"
+
+#. Author URI of the plugin/theme
+msgid "https://claudiosmweb.com"
+msgstr "https://claudiosmweb.com"
