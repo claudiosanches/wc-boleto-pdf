@@ -5,27 +5,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC Boleto PDF Integration simplehtmltopdf.
+ * WC Boleto PDF Integration html2pdfrocket.
  *
- * @package  WC_Boleto_PDF/Simplehtmltopdf
+ * @package  WC_Boleto_PDF/Html2pdfrocket
  * @category Abstract
  * @author   Claudio Sanches
  */
-class WC_Boleto_PDF_Integration_Simplehtmltopdf extends WC_Boleto_PDF_Integration {
+class WC_Boleto_PDF_Integration_Html2pdfrocket extends WC_Boleto_PDF_Integration {
 
 	/**
 	 * Integration ID.
 	 *
 	 * @var string
 	 */
-	public $id = 'simplehtmltopdf';
+	public $id = 'html2pdfrocket';
 
 	/**
 	 * API URL.
 	 *
 	 * @var int
 	 */
-	protected $api_url = 'http://api.simplehtmltopdf.com/';
+	protected $api_url = 'http://api.html2pdfrocket.com/pdf';
 
 	/**
 	 * Get PDF URL.
@@ -34,12 +34,14 @@ class WC_Boleto_PDF_Integration_Simplehtmltopdf extends WC_Boleto_PDF_Integratio
 	 */
 	public function get_pdf_url() {
 		$data = array(
-			'link'     => $this->boleto_url,
-			'orientation' => 'Portrait',
-			'mtop'        => '10',
-			'mright'      => '10',
-			'mleft'       => '10',
-			'mbot'        => '10'
+			'apikey'       => $this->settings['api_key'],
+			'value'        => $this->boleto_url,
+			'pagesize'     => 'A4',
+			'outputformat' => 'PDF',
+			'marginleft'   => '10',
+			'marginright'  => '10',
+			'margintop'    => '10',
+			'Marginbottom' => '10',
 		);
 		$params = array(
 			'timeout' => 60,
@@ -49,7 +51,7 @@ class WC_Boleto_PDF_Integration_Simplehtmltopdf extends WC_Boleto_PDF_Integratio
 		);
 		$response = wp_remote_get( $this->api_url . '?' . http_build_query( $data ), $params );
 
-		if ( ! is_wp_error( $response ) && 200 === $response['response']['code'] ) {
+		if ( ! is_wp_error( $response ) && 200 === $response['response']['code'] && ! empty( $response['body'] ) ) {
 			$this->logger( 'PDF generated successfully!' );
 			return $response['body'];
 		}

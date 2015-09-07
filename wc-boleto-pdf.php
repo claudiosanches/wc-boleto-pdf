@@ -5,7 +5,7 @@
  * Description: Generate PDF files for WooCommerce Boleto
  * Author: Claudio Sanches
  * Author URI: https://claudiosmweb.com
- * Version: 1.0.0
+ * Version: 0.0.1
  * License: GPLv2 or later
  * Text Domain: wc-boleto-pdf
  * Domain Path: /languages/
@@ -27,7 +27,7 @@ class WC_Boleto_PDF {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '0.0.1';
 
 	/**
 	 * Instance of this class.
@@ -70,6 +70,7 @@ class WC_Boleto_PDF {
 		include_once 'includes/abstracts/abstract-wc-boleto-pdf-integration.php';
 		include_once 'includes/admin/wc-boleto-pdf-admin.php';
 		include_once 'includes/integrations/class-wc-boleto-pdf-integration-freehtmltopdf.php';
+		include_once 'includes/integrations/class-wc-boleto-pdf-integration-html2pdfrocket.php';
 		include_once 'includes/integrations/class-wc-boleto-pdf-integration-simplehtmltopdf.php';
 	}
 
@@ -140,8 +141,9 @@ class WC_Boleto_PDF {
 	protected function get_settings() {
 		$settings = get_option( 'woocommerce_boleto_pdf_settings', array() );
 		$default  = array(
-			'debug' => 'no',
-			'api'   => 'freehtmltopdf',
+			'debug'   => 'no',
+			'api'     => 'freehtmltopdf',
+			'api_key' => '',
 		);
 
 		return array_merge( $default, $settings );
