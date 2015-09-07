@@ -69,9 +69,11 @@ class WC_Boleto_PDF {
 	private function _includes() {
 		include_once 'includes/abstracts/abstract-wc-boleto-pdf-integration.php';
 		include_once 'includes/admin/wc-boleto-pdf-admin.php';
-		include_once 'includes/integrations/class-wc-boleto-pdf-integration-freehtmltopdf.php';
-		include_once 'includes/integrations/class-wc-boleto-pdf-integration-html2pdfrocket.php';
-		include_once 'includes/integrations/class-wc-boleto-pdf-integration-simplehtmltopdf.php';
+
+		// Include integrations.
+		foreach ( glob( realpath( dirname( __FILE__ ) ) . '/includes/integrations/*.php' ) as $filename ) {
+			include_once $filename;
+		}
 	}
 
 	/**
