@@ -5,27 +5,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC Boleto PDF Integration freehtmltopdf.
+ * WC Boleto PDF Integration simplehtmltopdf.
  *
- * @package  WC_Boleto_PDF/Freehtmltopdf
+ * @package  WC_Boleto_PDF/Simplehtmltopdf
  * @category Abstract
  * @author   Claudio Sanches
  */
-class WC_Boleto_PDF_Integration_Freehtmltopdf extends WC_Boleto_PDF_Integration {
+class WC_Boleto_PDF_Integration_Simplehtmltopdf extends WC_Boleto_PDF_Integration {
 
 	/**
 	 * Integration ID.
 	 *
 	 * @var string
 	 */
-	public $id = 'freehtmltopdf';
+	public $id = 'simplehtmltopdf';
 
 	/**
 	 * API URL.
 	 *
 	 * @var int
 	 */
-	protected $api_url = 'http://freehtmltopdf.com';
+	protected $api_url = 'http://api.simplehtmltopdf.com/';
 
 	/**
 	 * Get PDF URL.
@@ -34,25 +34,23 @@ class WC_Boleto_PDF_Integration_Freehtmltopdf extends WC_Boleto_PDF_Integration 
 	 */
 	public function get_pdf_url() {
 		$data = array(
-			'convert'     => $this->boleto_url,
+			'link'     => $this->boleto_url,
+			'orientation' => 'Portrait',
 			'language'    => 'pt_BR',
-			'orientation' => 'portrait',
-			'size'        => 'A4'
+			'mtop'        => '10',
+			'mright'      => '10',
+			'mleft'       => '10',
+			'mbot'        => '10'
 		);
 		$params = array(
-			'body'    => http_build_query( $data ),
 			'timeout' => 60,
 			'headers' => array(
 				'content-type' => 'application/x-www-form-urlencoded'
 			)
 		);
-		$response = wp_remote_post( $this->api_url, $params );
+		$response = wp_remote_get( $this->api_url . '?' . http_build_query( $data ), $params );
 
-		if (
-			! is_wp_error( $response )
-			&& 200 === $response['response']['code']
-			&& 'Converting to PDF failed' !== substr( $response['body'], 0, 24 )
-		) {
+		if ( ! is_wp_error( $response ) && 200 === $response['response']['code'] ) {
 			$this->logger( 'PDF generated successfully!' );
 			return $response['body'];
 		}

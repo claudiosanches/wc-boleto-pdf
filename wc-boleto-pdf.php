@@ -70,6 +70,7 @@ class WC_Boleto_PDF {
 		include_once 'includes/abstracts/abstract-wc-boleto-pdf-integration.php';
 		include_once 'includes/admin/wc-boleto-pdf-admin.php';
 		include_once 'includes/integrations/class-wc-boleto-pdf-integration-freehtmltopdf.php';
+		include_once 'includes/integrations/class-wc-boleto-pdf-integration-simplehtmltopdf.php';
 	}
 
 	/**
@@ -119,6 +120,8 @@ class WC_Boleto_PDF {
 			if ( ! empty( $pdf_url ) ) {
 				// $filename = sanitize_title_with_dashes( get_bloginfo( 'name' ) . '-boleto-pedido-n' . $order_id ) . '.pdf';
 				header( 'Content-type: application/pdf' );
+				header( 'Cache-Control: no-cache' );
+				header( 'Accept-Ranges: none' );
 				// header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
 				echo $pdf_url;
 			} else {

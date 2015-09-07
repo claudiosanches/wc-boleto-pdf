@@ -43,7 +43,8 @@ class WC_Boleto_PDF_Admin extends WC_Settings_API {
 				'class'       => 'wc-enhanced-select',
 				'default'     => 'freehtmltopdf',
 				'options'     => array(
-					'freehtmltopdf' => 'Free Convert HTML to PDF'
+					'freehtmltopdf'   => 'Free Convert HTML to PDF - freehtmltopdf.com',
+					'simplehtmltopdf' => 'Convert HTML to PDF online - simplehtmltopdf.com',
 				)
 			),
 			'debug' => array(
