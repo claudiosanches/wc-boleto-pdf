@@ -42,8 +42,8 @@ class WC_Boleto_PDF {
 	private function __construct() {
 		// Checks with WooCommerce Boleto is installed.
 		if ( class_exists( 'WC_Boleto' ) ) {
+			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 			$this->_includes();
-
 			add_filter( 'woocommerce_boleto_url', array( $this, 'use_pdf' ) );
 			add_action( 'template_redirect', array( $this, 'template_redirect' ), 9999 );
 		}
@@ -74,6 +74,13 @@ class WC_Boleto_PDF {
 		foreach ( glob( realpath( dirname( __FILE__ ) ) . '/includes/integrations/*.php' ) as $filename ) {
 			include_once $filename;
 		}
+	}
+
+	/**
+	 * Load the plugin text domain for translation.
+	 */
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'wc-boleto-pdf', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
