@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Boleto - PDF Add-on 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/plugins/woocommerce-domination/\n"
-"POT-Creation-Date: 2015-09-07 02:52:17+00:00\n"
-"PO-Revision-Date: 2015-09-06 23:58-0300\n"
+"POT-Creation-Date: 2015-09-07 03:02:32+00:00\n"
+"PO-Revision-Date: 2015-09-07 00:02-0300\n"
 "Last-Translator: Claudio Sanches <contato@claudiosmweb.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -14,6 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Textdomain-Support: yes\n"
 
 #: includes/admin/wc-boleto-pdf-admin.php:35
 msgid "PDF Settings"
@@ -51,6 +52,10 @@ msgstr "Registra eventos, como solicitações de API em %s"
 #: includes/admin/wc-boleto-pdf-admin.php:64
 msgid "System Status &gt; Logs"
 msgstr "Status do Sistema &gt; Logs"
+
+#: wc-boleto-pdf.php:173
+msgid "Settings"
+msgstr "Configurações"
 
 #. Plugin Name of the plugin/theme
 msgid "WooCommerce Boleto - PDF Add-on"

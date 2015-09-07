@@ -40,12 +40,14 @@ class WC_Boleto_PDF {
 	 * Initialize the plugin actions.
 	 */
 	private function __construct() {
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+
 		// Checks with WooCommerce Boleto is installed.
 		if ( class_exists( 'WC_Boleto' ) ) {
-			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 			$this->_includes();
 			add_filter( 'woocommerce_boleto_url', array( $this, 'use_pdf' ) );
 			add_action( 'template_redirect', array( $this, 'template_redirect' ), 9999 );
+			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
 		}
 	}
 
@@ -156,6 +158,21 @@ class WC_Boleto_PDF {
 		);
 
 		return array_merge( $default, $settings );
+	}
+
+	/**
+	 * Action links.
+	 *
+	 * @param  array $links
+	 *
+	 * @return array
+	 */
+	public function plugin_action_links( $links ) {
+		$plugin_links = array();
+
+		$plugin_links[] = '<a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=checkout&section=wc_boleto_gateway#woocommerce_boleto_pdf_settings' ) ) . '">' . __( 'Settings', 'wc-boleto-pdf' ) . '</a>';
+
+		return array_merge( $plugin_links, $links );
 	}
 }
 
