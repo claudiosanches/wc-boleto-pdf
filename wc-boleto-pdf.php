@@ -43,8 +43,10 @@ class WC_Boleto_PDF {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
 		// Checks with WooCommerce Boleto is installed.
-		if ( class_exists( 'WC_Boleto' ) ) {
+		if ( class_exists( 'WooCommerce' ) ) {
 			$this->_includes();
+
+			add_action( 'admin_init', array( $this, 'admin_includes' ) );
 			add_filter( 'woocommerce_boleto_url', array( $this, 'use_pdf' ) );
 			add_action( 'template_redirect', array( $this, 'template_redirect' ), 9999 );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
@@ -70,7 +72,6 @@ class WC_Boleto_PDF {
 	 */
 	private function _includes() {
 		include_once 'includes/abstracts/abstract-wc-boleto-pdf-integration.php';
-		include_once 'includes/admin/wc-boleto-pdf-admin.php';
 
 		// Include integrations.
 		foreach ( glob( realpath( dirname( __FILE__ ) ) . '/includes/integrations/*.php' ) as $filename ) {
@@ -79,10 +80,17 @@ class WC_Boleto_PDF {
 	}
 
 	/**
+	 * Admin includes.
+	 */
+	public function admin_includes() {
+		include_once 'includes/admin/wc-boleto-pdf-admin.php';
+	}
+
+	/**
 	 * Load the plugin text domain for translation.
 	 */
 	public function load_plugin_textdomain() {
-		load_plugin_textdomain( 'wc-boleto-pdf', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'wc-boleto-pdf', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
 	/**

@@ -3,14 +3,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Boleto - PDF Add-on 0.0.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/plugins/woocommerce-domination/\n"
-"POT-Creation-Date: 2015-09-07 03:02:32+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-boleto-pdf\n"
+"POT-Creation-Date: 2015-09-07 03:21:09+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.3\n"
 
 #: includes/admin/wc-boleto-pdf-admin.php:35
