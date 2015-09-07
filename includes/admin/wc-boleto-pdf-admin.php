@@ -35,6 +35,17 @@ class WC_Boleto_PDF_Admin extends WC_Settings_API {
 				'type'        => 'title',
 				'description' => ''
 			),
+			'api' => array(
+				'title'       => __( 'API Integration', 'woocommerce-boleto' ),
+				'type'        => 'select',
+				'desc_tip'    => true,
+				'description' => __( 'Choose the integration that will generate the PDFs files.', 'woocommerce-boleto' ),
+				'class'       => 'wc-enhanced-select',
+				'default'     => 'freehtmltopdf',
+				'options'     => array(
+					'freehtmltopdf' => 'Free Convert HTML to PDF'
+				)
+			),
 			'debug' => array(
 				'title'       => __( 'Debug Log', 'wc-boleto-pdf' ),
 				'type'        => 'checkbox',

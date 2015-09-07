@@ -41,6 +41,7 @@ class WC_Boleto_PDF_Integration_Freehtmltopdf extends WC_Boleto_PDF_Integration 
 		);
 		$params = array(
 			'body'    => http_build_query( $data ),
+			'timeout' => 60,
 			'headers' => array(
 				'content-type' => 'application/x-www-form-urlencoded'
 			)
