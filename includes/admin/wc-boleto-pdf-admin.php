@@ -82,8 +82,7 @@ class WC_Boleto_PDF_Admin extends WC_Settings_API {
 	 */
 	public function scripts( $hook ) {
 		if ( 'woocommerce_page_wc-settings' === $hook && ( isset( $_GET['section'] ) && 'wc_boleto_gateway' == strtolower( $_GET['section'] ) ) ) {
-			// $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-			$suffix = '';
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 			wp_enqueue_script( 'wc-boleto-pdf-admin', plugins_url( 'assets/js/admin' . $suffix . '.js', plugin_dir_path( dirname( __FILE__ ) ) ), array( 'jquery' ), WC_Boleto_PDF::VERSION, true );
 		}
