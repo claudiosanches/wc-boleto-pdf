@@ -21,7 +21,7 @@ Compatível com as versões 2.3.x e 2.4.x do [WooCommerce](https://wordpress.org
 
 ### Instalação ###
 
-Confira o nosso guia de instalação e configuração do Itaú Shopline na aba [Installation](http://wordpress.org/plugins/wc-boleto-pdf/installation/).
+Confira o nosso guia de instalação e configuração do WooCommerce Boleto - PDF Add-on na aba [Installation](http://wordpress.org/plugins/wc-boleto-pdf/installation/).
 
 ### Dúvidas? ###
 
@@ -78,7 +78,7 @@ Além disso links de e-mails que já foram enviados para os clientes não serão
 
 ### Mais dúvidas relacionadas ao funcionamento do plugin? ###
 
-Por favor, caso você tenha algum problema com o funcionamento do plugin, [abra um tópico no fórum do plugin](https://wordpress.org/support/plugin/wc-boleto-pdf#postform) com o link arquivo de log (ative ele nas opções do plugin e tente fazer uma compra, depois vá até WooCommerce > Status do Sistema, selecione o log do *itau-shopline* e copie os dados, depois crie um link usando o [pastebin.com](http://pastebin.com) ou o [gist.github.com](http://gist.github.com)), desta forma fica mais rápido para fazer o diagnóstico.
+Por favor, caso você tenha algum problema com o funcionamento do plugin, [abra um tópico no fórum do plugin](https://wordpress.org/support/plugin/wc-boleto-pdf#postform) com o link arquivo de log (ative ele nas opções do plugin e tente fazer uma compra, depois vá até WooCommerce > Status do Sistema, selecione o log do *boleto_pdf* e copie os dados, depois crie um link usando o [pastebin.com](http://pastebin.com) ou o [gist.github.com](http://gist.github.com)), desta forma fica mais rápido para fazer o diagnóstico.
 
 ## Screenshots ##
 
