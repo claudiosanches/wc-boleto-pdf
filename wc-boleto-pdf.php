@@ -5,7 +5,7 @@
  * Description: Generate PDF files for WooCommerce Boleto
  * Author: Claudio Sanches
  * Author URI: https://claudiosmweb.com
- * Version: 0.0.1
+ * Version: 1.0.0
  * License: GPLv2 or later
  * Text Domain: wc-boleto-pdf
  * Domain Path: /languages/
@@ -27,7 +27,7 @@ class WC_Boleto_PDF {
 	 *
 	 * @var string
 	 */
-	const VERSION = '0.0.1';
+	const VERSION = '1.0.0';
 
 	/**
 	 * Instance of this class.
